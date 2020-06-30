@@ -1,24 +1,21 @@
-# README
+# OAR（オール)（いかだのオールの意）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+何かにチャレンジし、大きな成長を成し遂げるための継続・習慣化を手助けするアプリです。毎日の記録をデータとして入力グラフ化することで成長を可視化し、継続のモチベーションにつなげます。
 
-Things you may want to cover:
+### サイトテーマ
+何か大きなことを達成するためには毎日の積み重ねが超重要です。しかし、毎日継続することは簡単なようでとても難しい。このサイトでは、続けていくことが楽しくなるような仕組みを提供し、あなたのチャレンジをサポートします！
 
-* Ruby version
+### テーマを選んだ理由
+自身の人生の大きな分岐点ということもあり、今後の人生をよりよくするために役立つアプリを作りたかったから。
 
-* System dependencies
+### ターゲットユーザ
+何かを始めたい、継続したい人。生活を見直し、今後の人生を大きく変えていきたい人。
 
-* Configuration
+### 主な利用シーン
+日々の勉強や、ランニング、ダイエットなど、日々の生活において何か継続して取り組みたい時
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1zs9_8Yk3zsHHseLefxPX1XAXaA1LaebyAihIk_aC1j8/edit?usp=sharing
