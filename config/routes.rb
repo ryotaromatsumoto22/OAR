@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 devise_for :users
 
-root :to => 'top#top'
+root :to => 'tops#top'
 
 resources :users, only: [:show, :edit, :update, :index]
 resources :project, only: [:new, :create, :show, :edit, :update, :index, :destroy]
