@@ -4,10 +4,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-2", style="background-color: rgba(0, 0, 0, 0.1); height: 600px;">
+		<div class="col-xs-3", style="background-color: rgba(0, 0, 0, 0.1); height: 600px;">
 			<div class="profile">
 				<table class='table'>
-      				<tr><%= attachment_image_tag(@user, :image, :fill, 100, 100, fallback: "no_image.jpg") %></tr> 
+      				<tr><%= attachment_image_tag(@user, :image, :fill, 150, 100, fallback: "no_image.jpg", size:'125×125') %></tr> 
       				<tr>
     	  				<th>name</th>
     	  				<th><%= @user.name %></th>
@@ -25,12 +25,12 @@
 				    </tr>
 				</table>
 				<div class='row'>
-  					<%= link_to '',edit_user_path(@user),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+  					<%= link_to '',edit_user_path(@user),class: "col-xs-10 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-xs-10", style="background-color: blue; height: 1000px;">
+		<div class="col-xs-9", style="background-color: blue; height: 1000px;">
 			<div class="main contents">
 			</div>
 		</div>
