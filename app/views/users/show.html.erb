@@ -4,8 +4,29 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-2", style="background-color: red; height: 600px;">
+		<div class="col-xs-2", style="background-color: rgba(0, 0, 0, 0.1); height: 600px;">
 			<div class="profile">
+				<table class='table'>
+      				<tr><%= attachment_image_tag(@user, :image, :fill, 100, 100, fallback: "no_image.jpg") %></tr> 
+      				<tr>
+    	  				<th>name</th>
+    	  				<th><%= @user.name %></th>
+      				</tr>
+      				<tr>
+			    	  <th>introduction</th>
+			    	  <th><%= @user.introduce %></th>
+				    </tr>
+      				<tr>
+			    	  <th>level</th>
+			    	  <th><%= @user.level %></th>
+				    </tr>
+      				<tr>
+			    	  <th>モニュメント</th>
+				    </tr>
+				</table>
+				<div class='row'>
+  					<%= link_to '',edit_user_path(@user),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+				</div>
 			</div>
 		</div>
 
