@@ -1,12 +1,6 @@
-<div id="header">
-	<%= render "users/header" %>
-</div>
+<h1>Editing Project</h1>
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-2", style="background-color: blue; height: 1000px;">
-			<div class="main contents">
-			</div>
-		</div>
-	</div>
-</div>
+<%= render 'form', project: @project %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

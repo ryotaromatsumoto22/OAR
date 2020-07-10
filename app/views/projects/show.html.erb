@@ -1,17 +1,39 @@
-<div id="header">
-	<%= render "users/header" %>
-</div>
+<p id="notice"><%= notice %></p>
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-2", style="background-color: red; height: 600px;">
-			<div class="profile">
-			</div>
-		</div>
+<p>
+  <strong>User:</strong>
+  <%= @project.user_id %>
+</p>
 
-		<div class="col-xs-10", style="background-color: blue; height: 1000px;">
-			<div class="main contents">
-			</div>
-		</div>
-	</div>
-</div>
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @project.hour %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @project.date %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @project.goal %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @project.period %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @project.level %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
