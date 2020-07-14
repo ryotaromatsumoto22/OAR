@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.integer :hour
       t.datetime :date
       t.string :goal
-      t.string :period
+      t.datetime :period
       t.integer :level
 
       t.timestamps

@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -38,12 +33,7 @@
 
   <div class="field">
     <%= form.label :period %>
-    <%= form.text_field :period %>
-  </div>
-
-  <div class="field">
-    <%= form.label :level %>
-    <%= form.number_field :level %>
+    <%= form.date_select :period %>~<%= form.date_select :end_of_period %>
   </div>
 
   <div class="actions">
