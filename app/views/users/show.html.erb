@@ -30,8 +30,14 @@
 			</div>
 		</div>
 
-		<div class="col-xs-9", style="background-color: blue; height: 1000px;">
+		<div class="col-xs-9", style="background-color: rgba(255, 20, 255, 0.1); height: 1000px;">
 			<div class="main contents">
+				<div class="col-xs-6">
+					<% @project_for_graph.each do |name , data| %>
+						<%= column_chart data %>
+						<%= puts data %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

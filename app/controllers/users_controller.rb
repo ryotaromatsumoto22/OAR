@@ -2,6 +2,15 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@projects = @user.projects
+		@project_for_graph = {}
+		@projects.group_by(&:name).each{ |name,value|
+			h = {}
+			value.group_by{|p| p.date.to_date}.each{ |k,v|
+				h[k] = v.sum(&:hour)
+			}
+			@project_for_graph[name] = h
+		}
 	end
 
 	def edit
