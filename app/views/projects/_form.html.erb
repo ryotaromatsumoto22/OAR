@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :プロジェクト名 %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :hour %>
+    <%= form.label :時間 %>
     <%= form.number_field :hour %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
+    <%= form.label :日付 %>
     <%= form.datetime_select :date %>
   </div>
 
   <div class="field">
-    <%= form.label :goal %>
+    <%= form.label :目標 %>
     <%= form.text_field :goal %>
   </div>
 
   <div class="field">
-    <%= form.label :period %>
+    <%= form.label :期間 %>
     <%= form.date_select :period %>~<%= form.date_select :end_of_period %>
   </div>
 
