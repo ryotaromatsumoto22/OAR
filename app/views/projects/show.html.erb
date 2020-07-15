@@ -2,22 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @project.user_id %>
+  <%= @project.user.name %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
-</p>
-
-<p>
-  <strong>Hour:</strong>
-  <%= @project.hour %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @project.date %>
 </p>
 
 <p>
@@ -35,5 +25,18 @@
   <%= @project.level %>
 </p>
 
+<br>
+グラフと詳細表
+<p>
+  <strong>Hour:</strong>
+  <%= @project.hour %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @project.date %>
+</p>
+
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', user_path(current_user) %>
