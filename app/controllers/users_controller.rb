@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@projects = @user.projects
 		@project_for_graph = {}
-		@projects_for_data = ProjectDatum.where(user_id :@user_id)
+		@projects_for_data = ProjectDatum.where(user_id = @user_id)
 		@projects_for_data.group_by(&:project_id).each{ |name,value|
 			h = {}
 			value.group_by{|p| p.date.to_date}.each{ |k,v|
