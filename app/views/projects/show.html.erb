@@ -27,16 +27,20 @@
 
 <br>
 グラフと詳細表
-<p>
-  <strong>Hour:</strong>
-  <%= @project.hour %>
-</p>
+<br>
 
-<p>
-  <strong>Date:</strong>
-  <%= @project.date %>
-</p>
+<% @project_data.each do |data| %>
+  <p>
+    <strong>Hour:</strong>
+    <%= data.hour %>
+  </p>
 
+  <p>
+    <strong>Date:</strong>
+    <%= data.date %>
+  </p>
+<% end %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Record', new_project_datum_path(project_id: @project.id) %> |
+<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', user_path(current_user) %>
