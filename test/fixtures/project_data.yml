@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  hour: 1
+  date: 2020-07-15 02:33:52
+
+two:
+  project_id: 1
+  hour: 1
+  date: 2020-07-15 02:33:52

@@ -1,0 +1,38 @@
+<h1>時間投稿</h1>
+
+<%= form_with(model: @project_datum, local: true) do |form| %>
+  <% if @project_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_datum.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :project_id, :value => @project.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :プロジェクト名 %>
+    <%= @project.name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :時間 %>
+    <%= form.number_field :hour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :日付 %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

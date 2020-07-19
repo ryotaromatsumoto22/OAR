@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @project_data = @project.project_data
   end
 
   # GET /projects/new
@@ -17,6 +18,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    session[:project] = Project.find(params[:id])
+    @project_datum = ProjectDatum.new
   end
 
   # POST /projects
@@ -33,10 +36,16 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   def update
-    if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+    @project = Project.find(params[:id])
+    @project_datum = ProjectDatum.new(project_datum_params)
+    @project_datum.user_id = current_user.id
+    @project_datum.project_id = params[:id].to_i
+
+    if @project_datum.save && @project.update(project_params)
+      redirect_to user_path(current_user)
+      flash[:success] = "記録しました！"
     else
-      render :edit
+      render edit_project_path(params[:id])
     end
   end
 
@@ -55,5 +64,9 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:user_id, :name, :hour, :date, :goal, :period, :end_of_period, :level)
+    end
+
+    def project_datum_params
+      params.require(:project_datum).permit(:user_id, :project_id, :hour, :date)
     end
 end

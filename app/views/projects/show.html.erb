@@ -2,22 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @project.user_id %>
+  <%= @project.user.name %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
-</p>
-
-<p>
-  <strong>Hour:</strong>
-  <%= @project.hour %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @project.date %>
 </p>
 
 <p>
@@ -35,5 +25,22 @@
   <%= @project.level %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<br>
+グラフと詳細表
+<br>
+
+<% @project_data.each do |data| %>
+  <p>
+    <strong>Hour:</strong>
+    <%= data.hour %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= data.date %>
+  </p>
+<% end %>
+
+<%= link_to 'Record', new_project_datum_path(project_id: @project.id) %> |
+<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', user_path(current_user) %>
