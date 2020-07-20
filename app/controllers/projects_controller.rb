@@ -9,6 +9,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   def show
     @project_data = @project.project_data
+
+    @project_for_graph = {}
+    @projects_for_data = ProjectDatum.where(project_id: @project.id)
+    @projects_for_data.group_by(&:project_id).each{ |project_id,value|
+      h = {}
+      value.group_by{|p| p.date.to_date}.each{ |k,v|
+        h[k] = v.sum(&:hour)
+      }
+      @project_for_graph[project_id] = h
+    }
   end
 
   # GET /projects/new
