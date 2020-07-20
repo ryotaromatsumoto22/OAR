@@ -28,8 +28,14 @@
 <br>
 グラフと詳細表
 <br>
+  <div class="col-xs-6">
+    <% @project_for_graph.each do |project_id , data| %>
+      <%= column_chart data %>
+    <% end %>
+  </div>
 
 <% @project_data.each do |data| %>
+
   <p>
     <strong>Hour:</strong>
     <%= data.hour %>

@@ -5,13 +5,20 @@ class UsersController < ApplicationController
 		@projects = @user.projects
 		@project_for_graph = {}
 		@projects_for_data = ProjectDatum.where(user_id = @user_id)
-		@projects_for_data.group_by(&:project_id).each{ |name,value|
+		@projects_for_data.group_by(&:project_id).each{ |project_id,value|
 			h = {}
 			value.group_by{|p| p.date.to_date}.each{ |k,v|
 				h[k] = v.sum(&:hour)
 			}
-			@project_for_graph[name] = h
+			@project_for_graph[project_id] = h
 		}
+		# @data_for_graph = @project_for_graph.map{|project_id, value| {Project.find(project_id).name => value}}.reduce(:merge)
+		
+		@title_for_graph = {}
+		@projects.each{ |project|
+			@title_for_graph[project.id] = project.name
+		}
+
 
 	end
 
