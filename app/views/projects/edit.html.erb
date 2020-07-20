@@ -1,51 +1,52 @@
-<h1>Editing Project</h1>
-
-<br>
-
-<div class="field">
-  <h4 style="color: red;">プロジェクト名</h4>
-  <%= @project.name %>
+<div id="header">
+  <%= render "users/header" %>
 </div>
 
-<div class="field">
-  <h4 style="color: red;">目標</h4>
-  <%= @project.goal %>
-</div>
+<div class="container project_edit_container">
 
-<div class="field">
-  <h4 style="color: red;">期間</h4>
-  <%= @project.period %>~<%= @project.end_of_period %>
-</div>
+  <div class="row">
+    <h1>Editing Project</h1>
+  </div>
 
+  <div class="row">
+    
+    <%= form_with(model: @project, local: true) do |form| %>
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<%= form_with(model: @project_datum, local: true) do |form| %>
-  <% if @project_datum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project_datum.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% project_datum.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% project.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :時間 %>
-    <%= form.number_field :hour %>
+      <div class="field">
+        <%= form.label :プロジェクト名 %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :目標 %>
+        <%= form.text_field :goal %>
+      </div>
+
+      <div class="field">
+        <%= form.label :期間 %>
+        <%= form.date_select :period %>~<%= form.date_select :end_of_period %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :日付 %>
-    <%= form.date_select :date %>
+  <div class="row">
+    <%= link_to 'Show', @project %> |
+    <%= link_to 'Back', projects_path %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+</div>
