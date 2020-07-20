@@ -1,52 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div id="header">
+  <%= render "users/header" %>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user.name %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Goal:</strong>
-  <%= @project.goal %>
-</p>
-
-<p>
-  <strong>Period:</strong>
-  <%= @project.period %>~<%= @project.end_of_period %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @project.level %>
-</p>
-
-<br>
-グラフと詳細表
-<br>
-  <div class="col-xs-6">
-    <% @project_for_graph.each do |project_id , data| %>
-      <%= column_chart data %>
-    <% end %>
+<div class="project_show_container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p id="notice"><%= notice %></p>
+    </div>
   </div>
 
-<% @project_data.each do |data| %>
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table">
+        <thead>
+          <tr class="table-light">
+            <th>ユーザー名</th>
+            <th>プロジェクト名</th>
+            <th>目標</th>
+            <th>期間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @project.user.name %></td>
+            <td><%= @project.name %></td>
+            <td><%= @project.goal %></td>
+            <td><%= @project.period %>~<%= @project.end_of_period %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <p>
-    <strong>Hour:</strong>
-    <%= data.hour %>
-  </p>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <% @project_for_graph.each do |project_id , data| %>
+        <%= column_chart data, colors: ['grey'] %>
+      <% end %>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
 
-  <p>
-    <strong>Date:</strong>
-    <%= data.date %>
-  </p>
-<% end %>
+  <br>
 
-<%= link_to 'Record', new_project_datum_path(project_id: @project.id) %> |
-<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', user_path(current_user) %>
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table">
+        <thead>
+          <tr class="table-light">
+            <th>日付</th>
+            <th>時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @project_data.each do |data| %>
+            <tr>
+              <td><%= data.date %></td>
+              <td><%= data.hour %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <%= link_to 'Record', new_project_datum_path(project_id: @project.id) %> |
+      <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Back', user_path(current_user) %>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+</div>
+
