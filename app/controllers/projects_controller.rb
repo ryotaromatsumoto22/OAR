@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @project_data = @project.project_data
 
     @project_for_graph = {}
-    @projects_for_data = ProjectDatum.where(project_id: @project.id)
+    @projects_for_data = ProjectDatum.where(project_id: @project.id).order(:date)
     @projects_for_data.group_by(&:project_id).each{ |project_id,value|
       h = {}
       value.group_by{|p| p.date.to_date}.each{ |k,v|
@@ -47,13 +47,9 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     @project = Project.find(params[:id])
-    @project_datum = ProjectDatum.new(project_datum_params)
-    @project_datum.user_id = current_user.id
-    @project_datum.project_id = params[:id].to_i
-
-    if @project_datum.save && @project.update(project_params)
+    if @project.update(project_params)
       redirect_to user_path(current_user)
-      flash[:success] = "記録しました！"
+      flash[:success] = "変更しました！"
     else
       render edit_project_path(params[:id])
     end
