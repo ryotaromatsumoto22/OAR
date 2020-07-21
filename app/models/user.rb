@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :projects, dependent: :destroy
   has_many :project_data, dependent: :destroy
+  has_many :favorites, dependent: :destoroy
 
   attachment :image, destroy: false
 
