@@ -22,12 +22,21 @@
 
 
 $(function() {
-    $('.top-message').hide().fadeIn(5000)({
+    $('.top-message').hide().fadeIn(4000)({
     });
 });
 
 $(function() {
-    $('.a').hide().fadeIn(2000)({
+    $('.top-image').hide().fadeIn(2000)({
     });
 });
 
+$(function() {
+    $('.marathon').slideDown();
+});
+
+$(function(){
+  $('.marathon').mouseover(function(){
+    $('.marathon').fadeIn(2000)({
+  });
+});
