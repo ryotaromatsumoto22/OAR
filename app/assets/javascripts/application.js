@@ -19,3 +19,15 @@
 
 //= require chartkick
 //= require Chart.bundle
+
+
+$(function() {
+    $('.top-message').hide().fadeIn(5000)({
+    });
+});
+
+$(function() {
+    $('.a').hide().fadeIn(2000)({
+    });
+});
+
