@@ -10,6 +10,9 @@ resources :projects, only: [:new, :create, :show, :edit, :update, :index, :destr
 end
 resources :project_data, only: [:new, :create, :edit, :update, :destroy]
 
+post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
