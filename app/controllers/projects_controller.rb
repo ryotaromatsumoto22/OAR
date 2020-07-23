@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @project_data = @project.project_data
+    @project_data = @project.project_data.order(date: "DESC")
 
     if params[:view] == "monthly"
       @project_for_graph = {}

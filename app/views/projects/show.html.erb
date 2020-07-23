@@ -27,6 +27,17 @@
             <td><%= @project.name %></td>
             <td><%= @project.goal %></td>
             <td><%= @project.period %>~<%= @project.end_of_period %></td>
+            <td>
+              <% if @project.favorite_by?(current_user) %>
+                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :delete do %>
+                  <span class="glyphicon glyphicon-heart", style="color: red;"><%= @project.favorites.count%></span>
+                <% end %>
+              <% else %>
+                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :post do %>
+                  <span class="glyphicon glyphicon-heart-empty"><%= @project.favorites.count %></span>
+                <% end %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -35,9 +46,6 @@
 
   <div class="row">
     <div class="col-xs-3">
-      <%= link_to "今週を表示", project_path(view: "weekly") %>
-      <%= link_to "今月を表示", project_path(view: "monthly") %>
-      <%= link_to "今年を表示", project_path(view: "yearly") %>
     </div>
     <div class="col-xs-6">
       <% @project_for_graph.each do |project_id , data| %>
@@ -45,15 +53,6 @@
       <% end %>
     </div>
     <div class="col-xs-3">
-      <% if @project.favorite_by?(current_user) %>
-        <%= link_to project_favorites_path(@project, redirect_id: 1), method: :delete do %>
-          <span class="glyphicon glyphicon-heart"><%= @project.favorites.count%></span>
-        <% end %>
-      <% else %>
-        <%= link_to project_favorites_path(@project, redirect_id: 1), method: :post do %>
-          <span class="glyphicon glyphicon-heart-empty"><%= @project.favorites.count %></span>
-        <% end %>
-      <% end %>
     </div>
   </div>
 
@@ -65,10 +64,10 @@
       <table class="table">
         <thead>
           <tr class="table-light">
-            <th>今週の累計時間</th>
-            <th>今月の累計時間</th>
-            <th>今年の累計時間</th>
-            <th>累計時間</th>
+            <th><%= link_to "今週", project_path(view: "weekly") %></th>
+            <th><%= link_to "今月", project_path(view: "monthly") %></th>
+            <th>今年</th>
+            <th><%= link_to "累計時間", project_path(view: "yearly") %></th>
             <th>いいね数</th>
           </tr>
         </thead>
@@ -84,6 +83,16 @@
       </table>
     </div>
     <div class="col-xs-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5"></div>
+    <div class="col-xs-2">
+      <button class="btn btn-default col-xs-12">
+        <%= link_to '記録する', new_project_datum_path(project_id: @project.id) %>
+      </button>
+    </div>
+    <div class="col-xs-5"></div>
   </div>
 
   <div class="row">
@@ -112,7 +121,6 @@
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
-      <%= link_to 'Record', new_project_datum_path(project_id: @project.id) %> |
       <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
       <%= link_to 'Back', user_path(current_user) %>
     </div>
