@@ -2,39 +2,30 @@
   <%= render "users/header" %>
 </div>
 
-
-<div class="container project_datum_new_container">
+<div class="container project_edit_container">
 
   <div class="row">
-    <h1>時間投稿</h1>
+    <h1>Editing Project</h1>
   </div>
 
   <div class="row">
+    
     <%= form_with(model: @project_datum, local: true) do |form| %>
       <% if @project_datum.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@project_datum.errors.count, "error") %> prohibited this project from being saved:</h2>
+
           <ul>
-            <% @project_datum.errors.full_messages.each do |message| %>
+          <% @project_datum.errors.full_messages.each do |message| %>
             <li><%= message %></li>
-            <% end %>
+          <% end %>
           </ul>
         </div>
       <% end %>
 
       <div class="field">
-        <%= form.label :プロジェクト名 %>
-        <%= @project.name %>
-      </div>
-
-      <div class="field">
-        <%= form.label :目標 %>
-        <%= @project.goal %>
-      </div>
-
-      <div class="field">
-        <%= form.label :期間 %>
-        <%= @project.period %>~<%= @project.end_of_period %>
+        <%= form.label :日付 %>
+        <%= form.date_select :date %>
       </div>
 
       <div class="field">
@@ -42,14 +33,15 @@
         <%= form.number_field :hour %>
       </div>
 
-      <div class="field">
-        <%= form.label :日付 %>
-        <%= form.date_select :date %>
-      </div>
-
       <div class="actions">
         <%= form.submit %>
       </div>
-    </div>
-  <% end %>
+
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= link_to 'Show', @project %> |
+    <%= link_to 'Back', projects_path %>
+  </div>
 </div>

@@ -18,10 +18,18 @@ class ProjectDataController < ApplicationController
 	end
 
 	def edit
+		@project_datum = ProjectDatum.find(params[:id])
 
 	end
 
 	def update
+		@project_datum = ProjectDatum.find(params[:id])
+    	if @project_datum.update(project_datum_params)
+	      	redirect_to user_path(current_user)
+	      	flash[:success] = "変更しました！"
+    	else
+      		render edit_project_datum_path(params[:id])
+    	end
 	end
 
 	def destroy

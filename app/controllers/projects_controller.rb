@@ -50,7 +50,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    session[:project] = Project.find(params[:id])
     @project_datum = ProjectDatum.new
   end
 
