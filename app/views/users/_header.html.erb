@@ -11,6 +11,8 @@
 	         	</li>
 	          	<li><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #40E0D0;" %></li>
 
+	          	<li><%= link_to "ユーザー一覧", users_path, style: "font-family: HiraMinPro-W6; color: #40E0D2;" %></li>
+
 		        <li><%= link_to "新プロジェクト", new_project_path, style: "font-family: HiraMinPro-W6; color: #FF82B2;" %></li>
 
 		        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style: "font-family: HiraMinPro-W6; color: #2DFF57;" %></li>
