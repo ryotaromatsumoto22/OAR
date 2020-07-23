@@ -33,6 +33,10 @@ class ProjectDataController < ApplicationController
 	end
 
 	def destroy
+		@project_datum = ProjectDatum.find(params[:id])
+		params[:id] = @project_datum.project_id
+		@project_datum.destroy
+      	redirect_to project_path(params[:id]), notice: 'Project was successfully destroyed.'
 	end
 
 	private
