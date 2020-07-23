@@ -19,3 +19,24 @@
 
 //= require chartkick
 //= require Chart.bundle
+
+
+$(function() {
+    $('.top-message').hide().fadeIn(4000)({
+    });
+});
+
+$(function() {
+    $('.top-image').hide().fadeIn(2000)({
+    });
+});
+
+$(function() {
+    $('.marathon').slideDown();
+});
+
+$(function(){
+  $('.marathon').mouseover(function(){
+    $('.marathon').fadeIn(2000)({
+  });
+});
