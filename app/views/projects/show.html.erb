@@ -62,6 +62,33 @@
       <table class="table">
         <thead>
           <tr class="table-light">
+            <th>今週の累計時間</th>
+            <th>今月の累計時間</th>
+            <th>今年の累計時間</th>
+            <th>累計時間</th>
+            <th>いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @project_data.where("date >= ?", Date.today - 7).sum(:hour) %>時間</td>
+            <td><%= @project_data.where("date >= ?", Date.today - 30).sum(:hour) %>時間</td>
+            <td><%= @project_data.where("date >= ?", Date.today - 365).sum(:hour) %>時間</td>
+            <td><%= @project_data.all.sum(:hour) %>時間</td>
+            <td><%= @project.favorites.count %>いいね！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table">
+        <thead>
+          <tr class="table-light">
             <th>日付</th>
             <th>時間</th>
           </tr>
@@ -78,6 +105,7 @@
     </div>
     <div class="col-xs-3"></div>
   </div>
+
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">

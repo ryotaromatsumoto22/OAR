@@ -21,9 +21,6 @@
 			    	  <th>level</th>
 			    	  <th><%= @user.level %></th>
 				    </tr>
-      				<tr>
-			    	  <th>モニュメント</th>
-				    </tr>
 				    <tr>
 						<th>follows</th>
 						<th>
@@ -66,7 +63,7 @@
 							<br>
 							<%= link_to project_path(project_id) do %>
 								<%= @title_for_graph[project_id] %>
-								<%= column_chart data, colors: ['#AAAAAA']%>
+								<%= column_chart data, colors: ['#A9A9A9']%>
 							<% end %>
 						</div>
 					<% end %>
