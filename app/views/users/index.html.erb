@@ -1,42 +1,39 @@
 <div id="header">
-	<%= render "header" %>
+	<%= render "users/header" %>
 </div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-2", style="background-color: white; height: 1000px;">
-			<div class="users index">
-				<table class="table table-hover table-inverse">
-  					<thead>
-					    <tr>
-					      <th>image</th>
-					      <th>name</th>
-					      <th></th>
-					      <th colspan="3"></th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <% @users.each do |user| %>
-					      <tr>
-					        <td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
-					        <td><%= user.name %></td>
-					        <td>フォロー数：<%= user.follower.count %></td>
-					        <td>フォロワー数：<%= user.followed.count %></td>
-					        <td>
-					          <% unless user == current_user %>
-					            <% if current_user.following?(user) %>
-					              <%= link_to 'フォローを外す', unfollow_path(user.id,redirect_id: 0), method: :POST %>
+<div class="body">
+	<div class="container">
+		<h3>ユーザー一覧</h3>
+		<table class="table table-hover table-inverse">
+  			<thead>
+			    <tr>
+				   	<th>image</th>
+				    <th>name</th>
+				    <th></th>
+				    <th colspan="3"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+				    <tr>
+				    	<td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
+					    <td><%= user.name %></td>
+					    <td>フォロー数：<%= user.follower.count %></td>
+				        <td>フォロワー数：<%= user.followed.count %></td>
+				        <td>
+				        	<% unless user == current_user %>
+					    	    <% if current_user.following?(user) %>
+					            	<%= link_to 'フォローを外す', unfollow_path(user.id,redirect_id: 0), method: :POST %>
 					            <% else %>
-					              <%= link_to 'フォローする', follow_path(user.id,redirect_id: 0), method: :POST %>
+					            	<%= link_to 'フォローする', follow_path(user.id,redirect_id: 0), method: :POST %>
 					            <% end %>
-					          <% end %>
-					        </td>
-					        <td><%= link_to "Show", user_path(user.id)%></td>
-					      </tr>
-					    <% end %>
-					  </tbody>
-					</table>
-			</div>
-		</div>
+					        <% end %>
+					    </td>
+					    <td><%= link_to "Show", user_path(user.id)%></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>
