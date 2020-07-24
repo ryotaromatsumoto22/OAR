@@ -2,7 +2,7 @@
   <%= render "users/header" %>
 </div>
 
-<div class="container sign-in">
+<div class="container sign-in", data-turbolinks="false">
   <h3 style="text-align: center">ログイン</h3>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

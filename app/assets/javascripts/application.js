@@ -40,3 +40,11 @@ $(function() {
 $(function() {
     $('.marathon3').fadeIn(25000);
 });
+
+$(function() {
+    $('.sign-in').fadeIn(2000);
+});
+
+$(function() {
+    $('.sign-up').fadeIn(2000);
+});
