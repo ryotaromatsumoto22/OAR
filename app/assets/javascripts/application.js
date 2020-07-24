@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -22,21 +22,33 @@
 
 
 $(function() {
-    $('.top-message').hide().fadeIn(4000)({
-    });
+    $('.top-image').fadeIn(2000);
 });
 
 $(function() {
-    $('.top-image').hide().fadeIn(2000)({
-    });
+    $('.top-message').fadeIn(4000);
+});
+
+$('.marathon1').append(
+	'<style>marathon1{display:none;}'
+	);
+	$(window).on("load", function() {
+	$('.marathon1').delay(500).fadeIn("slow");
+});
+
+
+$(function() {
+    $('.marathon2').fadeIn(1000);
 });
 
 $(function() {
-    $('.marathon').slideDown();
+    $('.marathon3').fadeIn(2000);
 });
 
-$(function(){
-  $('.marathon').mouseover(function(){
-    $('.marathon').fadeIn(2000)({
-  });
+$(function() {
+    $('.sign-in').fadeIn(2000);
+});
+
+$(function() {
+    $('.sign-up').fadeIn(2000);
 });

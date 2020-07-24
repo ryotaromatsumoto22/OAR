@@ -7,13 +7,15 @@ class ProjectDataController < ApplicationController
 	end
 
 	def create
+		@project = Project.find(params[:project_id])
 		@project_datum = ProjectDatum.new(project_datum_params)
 		@project_datum.user_id = current_user.id
+		@project_datum.project_id = @project.id
 		if @project_datum.save
 			redirect_to project_path(@project_datum.project_id)
 			flash[:success] = "記録しました！"
 		else
-			redirect_to edit_project_path(@project)
+			redirect_to new_project_datum_path(@project)
 		end
 	end
 

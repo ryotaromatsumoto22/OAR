@@ -9,7 +9,7 @@
 	         	<li style="font-family: serif; margin-top: 15px;">
 	            <!-- ようこそ、<%= current_user.name %>さん！ -->
 	         	</li>
-	          	<li><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #40E0D0;" %></li>
+	          	<li><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #999999" %></li>
 
 	          	<li><%= link_to "ユーザー一覧", users_path, style: "font-family: HiraMinPro-W6; color: #40E0D2;" %></li>
 
@@ -20,11 +20,11 @@
 	        <% else %>
 
 	          	<!-- ログインしていない時 -->
-	         	<li><%= link_to "Top", root_path, style: "font-family: HiraMinPro-W6; color: #000000;" %></li>
+	         	<li><%= link_to "Top", root_path, style: "font-family: HiraMinPro-W6; color: #CCCCCC;" %></li>
 
-	          	<li><%= link_to "新規登録", new_user_registration_path, style: "font-family: HiraMinPro-W6; color: #FF1493;" %></li>
+	          	<li><%= link_to "新規登録", new_user_registration_path, style: "font-family: HiraMinPro-W6; color: #FFCC66;" %></li>
 
-	          	<li><%= link_to "ログイン", new_user_session_path, style: "font-family: HiraMinPro-W6; color: #CD5C5C;" %></li>
+	          	<li><%= link_to "ログイン", new_user_session_path, style: "font-family: HiraMinPro-W6; color: #8EB8FF" %></li>
 
         	<% end %>
 
