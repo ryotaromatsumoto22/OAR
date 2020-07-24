@@ -8,17 +8,39 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @project_data = @project.project_data
+    @project_data = @project.project_data.order(date: "DESC")
 
-    @project_for_graph = {}
-    @projects_for_data = ProjectDatum.where(project_id: @project.id).order(:date)
-    @projects_for_data.group_by(&:project_id).each{ |project_id,value|
-      h = {}
-      value.group_by{|p| p.date.to_date}.each{ |k,v|
-        h[k] = v.sum(&:hour)
+    if params[:view] == "monthly"
+      @project_for_graph = {}
+      @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 30).order(:date)
+      @projects_for_data.group_by(&:project_id).each{ |project_id,value|
+        h = {}
+        value.group_by{|p| p.date.month}.each{ |k,v|
+          h[k] = v.sum(&:hour)
+        }
+        @project_for_graph[project_id] = h
       }
-      @project_for_graph[project_id] = h
-    }
+    elsif params[:view] == "yearly"
+      @project_for_graph = {}
+      @projects_for_data = ProjectDatum.where(project_id: @project.id).order(:date)
+      @projects_for_data.group_by(&:project_id).each{ |project_id,value|
+        h = {}
+        value.group_by{|p| p.date.year}.each{ |k,v|
+          h[k] = v.sum(&:hour)
+        }
+        @project_for_graph[project_id] = h
+      }
+    else 
+      @project_for_graph = {}
+      @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 7).order(:date)
+      @projects_for_data.group_by(&:project_id).each{ |project_id,value|
+        h = {}
+        value.group_by{|p| p.date.to_date}.each{ |k,v|
+          h[k] = v.sum(&:hour)
+        }
+        @project_for_graph[project_id] = h
+      }
+    end
   end
 
   # GET /projects/new
@@ -28,7 +50,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    session[:project] = Project.find(params[:id])
     @project_datum = ProjectDatum.new
   end
 
