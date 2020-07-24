@@ -88,9 +88,11 @@
   <div class="row">
     <div class="col-xs-5"></div>
     <div class="col-xs-2">
-      <button class="btn btn-default col-xs-12">
-        <%= link_to '記録する', new_project_datum_path(project_id: @project.id) %>
-      </button>
+      <% if current_user == @project.user %>
+        <button class="btn btn-default col-xs-12">
+          <%= link_to '記録する', new_project_datum_path(project_id: @project.id) %>
+        </button>
+      <% end %>
     </div>
     <div class="col-xs-5"></div>
   </div>
@@ -110,8 +112,10 @@
             <tr>
               <td><%= data.date %></td>
               <td><%= data.hour %></td>
-              <td><%= link_to "編集", edit_project_datum_path(data) %></td>
-              <td><%= link_to '削除', project_datum_path(data), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% if current_user == @project.user %>
+                <td><%= link_to "編集", edit_project_datum_path(data) %></td>
+                <td><%= link_to '削除', project_datum_path(data), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -123,7 +127,9 @@
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
-      <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% if current_user == @project.user %>
+        <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% end %>
       <%= link_to 'Back', user_path(current_user) %>
     </div>
     <div class="col-xs-3"></div>
