@@ -29,16 +29,20 @@ $(function() {
     $('.top-message').fadeIn(4000);
 });
 
+$('.marathon1').append(
+	'<style>marathon1{display:none;}'
+	);
+	$(window).on("load", function() {
+	$('.marathon1').delay(500).fadeIn("slow");
+});
+
+
 $(function() {
-    $('.marathon1').fadeIn(500);
+    $('.marathon2').fadeIn(1000);
 });
 
 $(function() {
-    $('.marathon2').fadeIn(10000);
-});
-
-$(function() {
-    $('.marathon3').fadeIn(25000);
+    $('.marathon3').fadeIn(2000);
 });
 
 $(function() {
