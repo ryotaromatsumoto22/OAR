@@ -23,6 +23,10 @@
       <% end %>
 
       <div class="field">
+        <%= hidden_field_tag :project_id, @project.id %>
+      </div>
+
+      <div class="field">
         <%= form.label :プロジェクト名 %>
         <%= @project.name %>
       </div>
