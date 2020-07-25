@@ -19,7 +19,7 @@
 				    <tr>
 				    	<td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
 					    <td><%= user.name %></td>
-					    <td><%= user.project_data.all.sum(:hour) %> Lv.</td>
+					    <td>Lv.<%= user.project_data.all.sum(:hour) %></td>
 					    <td>following：<%= user.follower.count %></td>
 				        <td>follower：<%= user.followed.count %></td>
 				        <td>

@@ -26,8 +26,16 @@
 			    	  <th><%= @user.introduce %></th>
 				    </tr>
       				<tr>
+			    	  <th>projects</th>
+			    	  <th>
+			    	  	<%= link_to projects_path(user_id: @user.id) do %>
+			    	  		<%= @user.projects.count %>
+			    	  	<% end %>
+			    	  </th>
+				    </tr>
+      				<tr>
 			    	  <th>level</th>
-			    	  <th><%= @user.project_data.all.sum(:hour) %> Lv.</th>
+			    	  <th>Lv.<%= @user.project_data.all.sum(:hour) %></th>
 				    </tr>
 				    <tr>
 						<th>follows</th>
