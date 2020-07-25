@@ -69,3 +69,4 @@ gem "refile-mini_magick"
 gem "chartkick"
 gem 'groupdate'
 gem 'dotenv-rails'
+gem 'kaminari'

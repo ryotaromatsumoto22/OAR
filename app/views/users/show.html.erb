@@ -12,11 +12,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-3", style="height: 600px;">
-			<div class="profile">
+		<div class="col-xs-3">
+			<div class="profile", style="color: #777777;">
 				<table class='table'>
 					<br>
-      				<tr><%= attachment_image_tag(@user, :image, :fill, 150, 100, fallback: "no_image.jpg", size:'150×150') %></tr> 
+      				<tr><%= attachment_image_tag(@user, :image, :fill, 262, 100, fallback: "no_image.jpg", size:'150×150') %></tr> 
       				<tr>
     	  				<th>name</th>
     	  				<th><%= @user.name %></th>
@@ -26,8 +26,16 @@
 			    	  <th><%= @user.introduce %></th>
 				    </tr>
       				<tr>
+			    	  <th>projects</th>
+			    	  <th>
+			    	  	<%= link_to projects_path(user_id: @user.id), data: {"turbolinks" => false} do %>
+			    	  		<%= @user.projects.count %>
+			    	  	<% end %>
+			    	  </th>
+				    </tr>
+      				<tr>
 			    	  <th>level</th>
-			    	  <th><%= @user.level %></th>
+			    	  <th>Lv.<%= @user.project_data.all.sum(:hour) %></th>
 				    </tr>
 				    <tr>
 						<th>follows</th>
@@ -64,20 +72,30 @@
 			</div>
 		</div>
 
-		<div class="col-xs-9", style="background-color: white; height: 1000px;">
+		<div class="col-xs-1">
+		</div>
+
+		<div class="col-xs-8", style="background-color: white;">
 			<div class="main_contents">
-					<% @project_for_graph.each do |project_id , data| %>
-						<div class="col-xs-5">
+				<% @project_for_graph.each do |project_id , data| %>
+					<div class="col-xs-5">
+						<br>
+						<%= link_to project_path(project_id), data: {"turbolinks" => false} do %>
+							<h4 style="color: #777777; font-family: HiraMinPro-W6;"><%= @title_for_graph[project_id] %></h4>
 							<br>
-							<%= link_to project_path(project_id) do %>
-								<%= @title_for_graph[project_id] %>
+							<div class="graph">
 								<%= column_chart data, colors: ['#A9A9A9']%>
-							<% end %>
-						</div>
-					<% end %>
-
+							</div>
+						<% end %>
+					</div>
+				<% end %>
 			</div>
-
 		</div>
 	</div>
 </div>
+
+<div class="footer">
+	<%= render "tops/footer" %>
+</div>
+
+
