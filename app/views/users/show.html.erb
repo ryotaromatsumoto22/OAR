@@ -27,7 +27,7 @@
 				    </tr>
       				<tr>
 			    	  <th>level</th>
-			    	  <th><%= @user.level %></th>
+			    	  <th><%= @user.project_data.all.sum(:hour) %></th>
 				    </tr>
 				    <tr>
 						<th>follows</th>
