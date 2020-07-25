@@ -113,8 +113,16 @@
               <td><%= data.date %></td>
               <td><%= data.hour %></td>
               <% if current_user == @project.user %>
-                <td><%= link_to "編集", edit_project_datum_path(data) %></td>
-                <td><%= link_to '削除', project_datum_path(data), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td>
+                  <%= link_to edit_project_datum_path(data) do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to project_datum_path(data), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
               <% end %>
             </tr>
           <% end %>
