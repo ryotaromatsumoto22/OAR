@@ -61,4 +61,14 @@ $(function() {
     $('.project_show_container').fadeIn(2000);
 });
 
+$(function() {
+    $('.project_new_container').fadeIn(2000);
+});
 
+$(function() {
+    $('.project_edit_container').fadeIn(2000);
+});
+
+$(function() {
+    $('.project_datum_new_container').fadeIn(2000);
+});

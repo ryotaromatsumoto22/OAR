@@ -27,7 +27,7 @@ class ProjectDataController < ApplicationController
 	def update
 		@project_datum = ProjectDatum.find(params[:id])
     	if @project_datum.update(project_datum_params)
-	      	redirect_to user_path(current_user)
+	      	redirect_to project_path(@project_datum.project.id)
 	      	flash[:success] = "変更しました！"
     	else
       		render edit_project_datum_path(params[:id])

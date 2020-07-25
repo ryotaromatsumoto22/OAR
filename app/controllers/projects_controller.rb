@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
     if params[:view] == "monthly"
       @project_for_graph = {}
-      @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 30).order(:date)
+      @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 365).order(:date)
       @projects_for_data.group_by(&:project_id).each{ |project_id,value|
         h = {}
         value.group_by{|p| p.date.month}.each{ |k,v|
