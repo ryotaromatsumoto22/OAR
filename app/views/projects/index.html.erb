@@ -29,7 +29,7 @@
               <td><%= project.goal %></td>
               <td><%= project.period %>〜<%= project.end_of_period %></td>
               <td>Lv.<%= project.project_data.all.sum(:hour) %></td>
-              <td><%= link_to 'Show', project %></td>
+              <td><%= link_to 'Show', project, data: {"turbolinks" => false} %></td>
             </tr>
           <% end %>
         </tbody>
