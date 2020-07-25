@@ -52,3 +52,13 @@ $(function() {
 $(function() {
     $('.sign-up').fadeIn(2000);
 });
+
+$(function() {
+    $('.project_index_container').fadeIn(2000);
+});
+
+$(function() {
+    $('.project_show_container').fadeIn(2000);
+});
+
+

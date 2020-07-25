@@ -28,7 +28,7 @@
       				<tr>
 			    	  <th>projects</th>
 			    	  <th>
-			    	  	<%= link_to projects_path(user_id: @user.id) do %>
+			    	  	<%= link_to projects_path(user_id: @user.id), data: {"turbolinks" => false} do %>
 			    	  		<%= @user.projects.count %>
 			    	  	<% end %>
 			    	  </th>
@@ -80,10 +80,12 @@
 				<% @project_for_graph.each do |project_id , data| %>
 					<div class="col-xs-5">
 						<br>
-						<%= link_to project_path(project_id) do %>
+						<%= link_to project_path(project_id), data: {"turbolinks" => false} do %>
 							<h4 style="color: #777777; font-family: HiraMinPro-W6;"><%= @title_for_graph[project_id] %></h4>
 							<br>
-							<%= column_chart data, colors: ['#A9A9A9']%>
+							<div class="graph">
+								<%= column_chart data, colors: ['#A9A9A9']%>
+							</div>
 						<% end %>
 					</div>
 				<% end %>

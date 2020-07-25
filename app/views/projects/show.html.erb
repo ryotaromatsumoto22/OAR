@@ -26,7 +26,7 @@
             <td><%= @project.user.name %></td>
             <td><%= @project.name %></td>
             <td><%= @project.goal %></td>
-            <td><%= @project.period %>~<%= @project.end_of_period %></td>
+            <td><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
             <td>
               <% if @project.favorite_by?(current_user) %>
                 <%= link_to project_favorites_path(@project, redirect_id: 1), method: :delete do %>
@@ -119,7 +119,7 @@
         <tbody>
           <% @project_data.each do |data| %>
             <tr>
-              <td><%= data.date %></td>
+              <td><%= data.date.to_date %></td>
               <td><%= data.hour %> 時間</td>
               <% if current_user == @project.user %>
                 <td>
