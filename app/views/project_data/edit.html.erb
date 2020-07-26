@@ -5,8 +5,10 @@
 <div class="container project_edit_container">
 
   <div class="row">
-    <h1>Editing Project</h1>
+    <h1 style="color: #777777;">Editing Project</h1>
   </div>
+
+  <br>
 
   <div class="row">
     
@@ -23,6 +25,12 @@
         </div>
       <% end %>
 
+
+      <div class="field">
+        <%= form.label :プロジェクト名 %>
+        <%= @project_datum.project.name %>
+      </div>
+
       <div class="field">
         <%= form.label :日付 %>
         <%= form.date_select :date %>
@@ -38,11 +46,6 @@
       </div>
 
     <% end %>
-  </div>
-
-  <div class="row">
-    <%= link_to 'Show', @project %> |
-    <%= link_to 'Back', projects_path %>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 </div>
 
 <div class="body">
-	<div class="container">
+	<div class="container user_index">
 		<h3  style="color: #777777;">ユーザー一覧</h3>
 		<table class="table table-hover table-inverse">
   			<thead>
@@ -19,19 +19,31 @@
 				    <tr>
 				    	<td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
 					    <td><%= user.name %></td>
-					    <td>Lv.<%= user.project_data.all.sum(:hour) %></td>
+					    <% if user.project_data.all.sum(:hour) == 0 %>
+			    	  		<td>Lv.<%= user.project_data.all.sum(:hour) %></td>
+			    	  	<% elsif user.project_data.all.sum(:hour) > 100 %>
+			    	  		<td style="color: rgba(200, 0, 0, 0.8);">Lv.<%= user.project_data.all.sum(:hour) %></td>
+			    	  	<% elsif user.project_data.all.sum(:hour) > 80 %>
+			    	  		<td style="color: #FF570D;">Lv.<%= user.project_data.all.sum(:hour) %></th>
+			    	  	<% elsif user.project_data.all.sum(:hour) > 40 %>
+			    	  		<td style="color: #008000;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+			    	  	<% elsif user.project_data.all.sum(:hour) > 20 %>
+			    	  		<td style="color: #005FFF;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+			    	  	<% elsif user.project_data.all.sum(:hour) > 0 %>
+			    	  		<td style="color: #000080;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+			    	  	<% end %>
 					    <td>following：<%= user.follower.count %></td>
 				        <td>follower：<%= user.followed.count %></td>
 				        <td>
 				        	<% unless user == current_user %>
 					    	    <% if current_user.following?(user) %>
-					            	<%= link_to 'unfollow', unfollow_path(user.id,redirect_id: 0), method: :POST %>
+					            	<%= link_to 'unfollow', unfollow_path(user.id,redirect_id: 0), method: :POST, data: {"turbolinks" => false} %>
 					            <% else %>
-					            	<%= link_to 'follow', follow_path(user.id,redirect_id: 0), method: :POST %>
+					            	<%= link_to 'follow', follow_path(user.id,redirect_id: 0), method: :POST , data: {"turbolinks" => false}%>
 					            <% end %>
 					        <% end %>
 					    </td>
-					    <td><%= link_to "Show", user_path(user.id)%></td>
+					    <td><%= link_to "Show", user_path(user.id), data: {"turbolinks" => false} %></td>
 					</tr>
 				<% end %>
 				<div style="text-align: center;"><%= paginate @users %></div>

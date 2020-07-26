@@ -1,27 +1,43 @@
-<h2>User info</h2>
+<div id="header">
+  <%= render "header" %>
+</div>
 
-<%= form_for(@user) do |f| %>
-  <%= render 'layouts/errors', obj: @user %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "name" %>
+<div class="container edit-user">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h2 style="color: #777777;">User info</h2>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.attachment_field :image, class: "user_image" %>
-  </div>
+  <br>
 
-  <div class="field">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduce, class: "introduction" %>
-  </div>
+  <div class="row", style="height: 500px;">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= form_for(@user) do |f| %>
+        <%= render 'layouts/errors', obj: @user %>
 
-  <div class="actions">
-    <%= f.submit %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image %>
+          <%= f.attachment_field :image %>
+        </div>
+
+        <div class="field">
+          <%= f.label :introduction %>
+          <%= f.text_area :introduce %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
 
 <div class="footer">
   <%= render "tops/footer" %>
