@@ -89,6 +89,7 @@ $(function(){
     $('.graph').slideToggle(2000);
 });
 
+
 $(function(){
     $('.profile').slideToggle(2000);
 });
