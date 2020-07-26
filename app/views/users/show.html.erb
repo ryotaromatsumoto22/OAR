@@ -62,9 +62,9 @@
 						<% end %>
 					<% else %>
 						<% if current_user.following?(@user) %>
-	       					<%= link_to 'フォロー外す', unfollow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-danger btn-block col-xs-12', data: {"turbolinks" => false} %>
+	       					<%= link_to 'unfolllow', unfollow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', data: {"turbolinks" => false} %>
 	    				<% else %>
-	       					<%= link_to 'フォローする', follow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-primary btn-block col-xs-12', data: {"turbolinks" => false}%>
+	       					<%= link_to 'follow', follow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', data: {"turbolinks" => false}%>
 	    				<% end %>
 					<% end %>
 				</div>

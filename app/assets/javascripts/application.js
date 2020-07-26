@@ -72,3 +72,27 @@ $(function() {
 $(function() {
     $('.project_datum_new_container').fadeIn(2000);
 });
+
+$(function() {
+    $('.user_index').fadeIn(2000);
+});
+
+$(function() {
+    $('.follow_index').fadeIn(2000);
+});
+
+$(function() {
+    $('.follower_index').fadeIn(2000);
+});
+
+$(function(){
+    $('.graph').slideToggle(2000);
+});
+
+$(function(){
+    $('.profile').slideToggle(2000);
+});
+
+
+
+
