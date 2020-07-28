@@ -6,7 +6,7 @@
         	<% if user_signed_in? %>
 
 	         	<!--ユーザーがログインしている時 -->
-	         	<li style="font-family: serif; margin-top: 15px;">
+	         	<li style="font-size: 30px; font-family: serif; margin-top: 15px;">
 	            <!-- ようこそ、<%= current_user.name %>さん！ -->
 	         	</li>
 	          	<li><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #999999", data: {"turbolinks" => false} %></li>
