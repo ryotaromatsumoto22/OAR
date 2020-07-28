@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   def show
     @project_data = @project.project_data.order(date: "DESC")
 
+    #月別表示
     if params[:view] == "monthly"
       @project_for_graph = {}
       @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 365).order(:date)
@@ -21,6 +22,8 @@ class ProjectsController < ApplicationController
         }
         @project_for_graph[project_id] = h
       }
+
+    #年別表示
     elsif params[:view] == "yearly"
       @project_for_graph = {}
       @projects_for_data = ProjectDatum.where(project_id: @project.id).order(:date)
@@ -31,6 +34,8 @@ class ProjectsController < ApplicationController
         }
         @project_for_graph[project_id] = h
       }
+
+    #週表示
     else 
       @project_for_graph = {}
       @projects_for_data = ProjectDatum.where("(project_id = ?) AND (date >= ?)", @project.id, Date.today - 7).order(:date)
