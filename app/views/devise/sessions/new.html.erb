@@ -2,10 +2,11 @@
   <%= render "users/header" %>
 </div>
 
-<div class="container sign-in",style="background-color: rgba(250, 250, 250, 1);", data-turbolinks="false">
+<div class="container sign-in">
   <h3 style="text-align: center">ログイン</h3>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
     <div class="row", style="margin-top: 40px;">
       <div class="col-xs-4">
       </div>
@@ -86,6 +87,6 @@
     </div>
 </div>
 
-<div class="footer",style="margin-top: 30px;">
+<div class="footer", style="margin-top: 30px;">
   <%= render "tops/footer" %>
 </div>
