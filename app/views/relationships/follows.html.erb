@@ -20,19 +20,9 @@
           <tr>
             <td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
             <td><%= user.name %></td>
-            <% if user.project_data.all.sum(:hour) == 0 %>
-              <td>Lv.<%= user.project_data.all.sum(:hour) %></td>
-            <% elsif user.project_data.all.sum(:hour) > 100 %>
-              <td style="color: rgba(200, 0, 0, 0.8);">Lv.<%= user.project_data.all.sum(:hour) %></td>
-            <% elsif user.project_data.all.sum(:hour) > 80 %>
-              <td style="color: #FF570D;">Lv.<%= user.project_data.all.sum(:hour) %></th>
-            <% elsif user.project_data.all.sum(:hour) > 40 %>
-              <td style="color: #008000;">Lv.<%= user.project_data.all.sum(:hour) %></td>
-            <% elsif user.project_data.all.sum(:hour) > 20 %>
-              <td style="color: #005FFF;">Lv.<%= user.project_data.all.sum(:hour) %></td>
-            <% elsif user.project_data.all.sum(:hour) > 0 %>
-              <td style="color: #000080;">Lv.<%= user.project_data.all.sum(:hour) %></td>
-            <% end %>
+
+            <%= render "users/user-level", user: user %>
+            
             <td>following：<%= user.follower.count %></td>
             <td>follower：<%= user.followed.count %></td>
             <td>
