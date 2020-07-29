@@ -46,6 +46,10 @@ $(function() {
 });
 
 $(function() {
+    $('.footer').fadeIn(4000);
+});
+
+$(function() {
     $('.sign-in').fadeIn(2000);
 });
 
@@ -58,7 +62,7 @@ $(function() {
 });
 
 $(function() {
-    $('.project_show_container').fadeIn(2000);
+    $('.project_show_container').slideToggle(2000);
 });
 
 $(function() {
