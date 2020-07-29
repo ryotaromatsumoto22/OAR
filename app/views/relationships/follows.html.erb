@@ -23,7 +23,7 @@
 
             <%= render "users/user-level", user: user %>
 
-            <td>following：<%= user.follower.count %></td>
+            <td>follow：<%= user.follower.count %></td>
             <td>follower：<%= user.followed.count %></td>
             <td>
               <% unless user == current_user %>

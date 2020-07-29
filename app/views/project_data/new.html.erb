@@ -2,14 +2,14 @@
   <%= render "users/header" %>
 </div>
 
-
 <div class="container project_datum_new_container">
 
   <div class="row">
-    <h1 style="color: #777777;">時間投稿</h1>
+    <h1 style="color: #777777; text-align: center;">Record</h1>
   </div>
 
-  <div class="row">
+  <div class="row", style="color: #666666;">
+    <div class="col-xs-6 col-xs-offset-3" style="font-size: 18px;">
     <%= form_with(model: @project_datum, local: true) do |form| %>
       <% if @project_datum.errors.any? %>
         <div id="error_explanation">
@@ -27,34 +27,37 @@
       </div>
 
       <div class="field">
-        <%= form.label :プロジェクト名 %>
+        <%= form.label :プロジェクト名 %>：
         <%= @project.name %>
       </div>
 
       <div class="field">
-        <%= form.label :目標 %>
+        <%= form.label :目標 %>：
         <%= @project.goal %>
       </div>
 
       <div class="field">
-        <%= form.label :期間 %>
-        <%= @project.period %>~<%= @project.end_of_period %>
+        <%= form.label :期間 %>：
+        <%= @project.period.to_date %>~<%= @project.end_of_period.to_date %>
       </div>
 
       <div class="field">
-        <%= form.label :時間 %>
+        <%= form.label :時間 %>　
         <%= form.number_field :hour %>
       </div>
 
       <div class="field">
-        <%= form.label :日付 %>
+        <%= form.label :日付 %>　
         <%= form.date_select :date %>
       </div>
 
-      <div class="actions">
-        <%= form.submit %>
+      <br>
+
+      <div class="actions", style="text-align: center;">
+        <%= form.submit value="Recording" %>
       </div>
     </div>
+  </div>
   <% end %>
 </div>
 
