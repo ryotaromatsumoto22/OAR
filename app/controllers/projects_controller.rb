@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @project_data = @project.project_data.order(date: "DESC")
+    @project_data = @project.project_data.page(params[:page]).per(8).order(date: "DESC")
 
     #月別表示
     if params[:view] == "monthly"
