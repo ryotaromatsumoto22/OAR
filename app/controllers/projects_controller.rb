@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where(user_id: params[:user_id])
+    @projects = Project.where(user_id: params[:user_id]).page(params[:page]).per(20)
   end
 
   # GET /projects/1
