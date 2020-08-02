@@ -1,0 +1,153 @@
+<div id="header">
+  <%= render "users/header" %>
+</div>
+
+<div class="project_show_container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table">
+        <thead>
+          <tr class="table-light" style="color: grey;">
+            <th>ユーザー名</th>
+            <th>プロジェクト名</th>
+            <th>目標</th>
+            <th>期間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @project.user.name %></td>
+            <td><%= @project.name %></td>
+            <td><%= @project.goal %></td>
+            <td><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
+            <td>
+              <% if @project.favorite_by?(current_user) %>
+                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :delete, data: {"turbolinks" => false} do %>
+                  <span class="glyphicon glyphicon-heart", style="color: red;"><%= @project.favorites.count%></span>
+                <% end %>
+              <% else %>
+                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :post, data: {"turbolinks" => false} do %>
+                  <span class="glyphicon glyphicon-heart-empty"><%= @project.favorites.count %></span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <% @project_for_graph.each do |project_id , data| %>
+        <%= column_chart data, colors: ['#AAAAAA'] %>
+      <% end %>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table", style="color: grey;">
+        <thead>
+          <tr class="table-light">
+            <th><%= link_to "今週", project_path(view: "weekly"), :style=>"color: rgba(200, 0, 0, 0.8)", data: {"turbolinks" => false} %></th>
+            <th><%= link_to "今月", project_path(view: "monthly"), :style=>"color: #FFCC33", data: {"turbolinks" => false} %></th>
+            <th><%= link_to "今年", project_path(view: "yearly"), :style=>"color: #00CC99", data: {"turbolinks" => false} %></th>
+            <th>累計時間</th>
+            <th>いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @project_data.where("date >= ?", Date.today - 7).sum(:hour) %>時間</td>
+            <td><%= @project_data.where("date >= ?", Date.today - 30).sum(:hour) %>時間</td>
+            <td><%= @project_data.where("date >= ?", Date.today - 365).sum(:hour) %>時間</td>
+            <td><%= @project_data.all.sum(:hour) %>時間</td>
+            <td><%= @project.favorites.count %>いいね！</td>
+            <td>
+              <%= link_to edit_project_path(@project), data: {"turbolinks" => false} do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+            <td>
+              <% if current_user == @project.user %>
+                <%= link_to @project, method: :delete, data: { confirm: 'Are you sure?' }, data: {"turbolinks" => false} do %>
+                <i class="fas fa-trash"></i>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5"></div>
+    <div class="col-xs-2">
+      <% if current_user == @project.user %>
+        <button class="btn btn-default col-xs-12">
+          <%= link_to '記録する', new_project_datum_path(project_id: @project.id), data: {"turbolinks" => false} %>
+        </button>
+      <% end %>
+    </div>
+    <div class="col-xs-5"></div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <table class="table">
+        <thead>
+          <tr class="table-light", style="color: grey;">
+            <th>日付</th>
+            <th>時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @project_data.each do |data| %>
+            <tr>
+              <td><%= data.date.to_date %></td>
+              <td><%= data.hour %> 時間</td>
+              <% if current_user == @project.user %>
+                <td>
+                  <%= link_to edit_project_datum_path(data), data: {"turbolinks" => false} do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to project_datum_path(data), method: :delete, data: { confirm: 'Are you sure?' }, data: {"turbolinks" => false} do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div style="text-align: center;"><%= paginate @project_data %></div>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <%= render "tops/footer" %>
+</div>

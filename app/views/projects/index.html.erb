@@ -1,0 +1,45 @@
+<div id="header">
+  <%= render "users/header" %>
+</div>
+
+<div class="container project_index_container">
+  <div class="row">
+    <h1 style="color: #777777;">Projects</h1>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <table class="table">
+        <thead>
+          <tr class="table-light">
+            <th style="color: #777777;">Name</th>
+            <th style="color: #777777;">Goal</th>
+            <th style="color: #777777;">Period</th>
+            <th style="color: #777777;">Level</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.name %></td>
+              <td><%= project.goal %></td>
+              <td><%= project.period.to_date %> 〜 <%= project.end_of_period.to_date %></td>
+              <td>Lv.<%= project.project_data.all.sum(:hour) %></td>
+              <td><%= link_to 'Show', project, data: {"turbolinks" => false} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div style="text-align: center;"><%= paginate @projects %></div>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <%= render "tops/footer" %>
+</div>

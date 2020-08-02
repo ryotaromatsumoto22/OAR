@@ -1,0 +1,112 @@
+<div id="header">
+	<%= render "header" %>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<p id="notice"><%= notice %></p>
+		</div>
+		<div class="col-xs-9">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="profile", style="color: #777777;">
+				<table class='table'>
+					<br>
+      				<tr><%= attachment_image_tag(@user, :image, :fill, 262, 100, fallback: "no_image.jpg", size:'150×150') %></tr> 
+      				<tr>
+    	  				<th>name</th>
+    	  				<th><%= @user.name %></th>
+      				</tr>
+      				<tr>
+			    	  <th>introduction</th>
+			    	  <th><%= @user.introduce %></th>
+				    </tr>
+      				<tr>
+			    	  <th>projects</th>
+			    	  <th>
+			    	  	<%= link_to projects_path(user_id: @user.id), data: {"turbolinks" => false} do %>
+			    	  		<%= @user.projects.count %>
+			    	  	<% end %>
+			    	  </th>
+				    </tr>
+      				<tr>
+			    	  <th>level</th>
+			    	  <% if @user.project_data.all.sum(:hour) == 0 %>
+			    	  	<th>Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% elsif @user.project_data.all.sum(:hour) > 100 %>
+			    	  	<th style="color: rgba(200, 0, 0, 0.8);">Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% elsif @user.project_data.all.sum(:hour) > 80 %>
+			    	  	<th style="color: #FF570D;">Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% elsif @user.project_data.all.sum(:hour) > 40 %>
+			    	  	<th style="color: #008000;">Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% elsif @user.project_data.all.sum(:hour) > 20 %>
+			    	  	<th style="color: #005FFF;">Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% elsif @user.project_data.all.sum(:hour) > 0 %>
+			    	  	<th style="color: #000080;">Lv.<%= @user.project_data.all.sum(:hour) %></th>
+			    	  <% end %>
+				    </tr>
+				    <tr>
+						<th>follow</th>
+						<th>
+							<%= link_to follows_path(@user.id), data: {"turbolinks" => false} do %>
+								<%= @user.follower.count %>
+							<% end %>
+						</th>
+					</tr>
+					<tr>
+					<th>followers</th>
+						<th>
+							<%= link_to followers_path(@user.id), data: {"turbolinks" => false} do %>
+								<%= @user.followed.count %>
+							<% end %>
+						</th>
+					</tr>
+				</table>
+
+  				<div class="follow">
+					<% if @user == current_user %>
+						<%= link_to edit_user_path(@user.id), data: {"turbolinks" => false} do %>
+							<div class="btn btn-default col-xs-12 glyphicon glyphicon-wrench" ></div>
+						<% end %>
+					<% else %>
+						<% if current_user.following?(@user) %>
+	       					<%= link_to 'unfolllow', unfollow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', data: {"turbolinks" => false} %>
+	    				<% else %>
+	       					<%= link_to 'follow', follow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', data: {"turbolinks" => false}%>
+	    				<% end %>
+					<% end %>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-xs-1">
+		</div>
+
+		<div class="col-xs-8", style="background-color: white;">
+			<div class="main_contents">
+				<% @project_for_graph.each do |project_id , data| %>
+					<div class="col-xs-5">
+						<br>
+						<%= link_to project_path(project_id), data: {"turbolinks" => false} do %>
+							<h4 style="color: #777777; font-family: HiraMinPro-W6;"><%= @title_for_graph[project_id] %></h4>
+							<br>
+							<div class="graph">
+								<%= column_chart data, colors: ['#C0C0C0']%>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<%= render "tops/footer" %>
+</div>
+
+
