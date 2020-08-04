@@ -4,7 +4,7 @@ devise_for :users
 
 root :to => 'tops#top'
 
-resources :users, only: [:show, :edit, :update, :index]
+resources :users, only: [:show, :edit, :update, :index, :destroy]
 resources :projects, only: [:new, :create, :show, :edit, :update, :index, :destroy] do
 	resource :favorites, only:[:create, :destroy]
 end

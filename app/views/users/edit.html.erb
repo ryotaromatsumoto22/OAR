@@ -34,6 +34,13 @@
         <div class="actions">
           <%= f.submit %>
         </div>
+
+        <div class="actions">
+          <%= link_to user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fas fa-ban"></i>退会する<i class="fas fa-ban"></i>
+          <% end %>
+        </div>
+
       <% end %>
     </div>
   </div>
