@@ -2,48 +2,73 @@
   <%= render "header" %>
 </div>
 
-<div class="container edit-user">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <h2 style="color: #777777;">User info</h2>
-    </div>
-  </div>
-
+<h2 style="color: #777777; text-align: center;">User info</h2>
+<div class="container edit-user", style="height: 500px;">
   <br>
-
-  <div class="row", style="height: 500px;">
-    <div class="col-xs-6 col-xs-offset-3">
-      <%= form_for(@user) do |f| %>
-        <%= render 'layouts/errors', obj: @user %>
-
-        <div class="field">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
-
-        <div class="field">
-          <%= f.label :image %>
-          <%= f.attachment_field :image %>
-        </div>
-
-        <div class="field">
-          <%= f.label :introduction %>
-          <%= f.text_area :introduce %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-
-        <div class="actions">
-          <%= link_to user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fas fa-ban"></i>退会する<i class="fas fa-ban"></i>
-          <% end %>
-        </div>
-
-      <% end %>
+  <%= form_for(@user) do |f| %>
+    <%= render 'layouts/errors', obj: @user %>
+    <div class="row">
+      <div class="col-xs-4">
+      </div>
+      <div class="col-xs-2">
+        <%= f.label :name %>
+      </div>
+      <div class="col-xs-3">
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-xs-3">
+      </div>
     </div>
-  </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-4">
+      </div>
+      <div class="col-xs-2">
+        <%= f.label :image %>
+      </div>
+      <div class="col-xs-3">
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-xs-3">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-4">
+      </div>
+      <div class="col-xs-2">
+        <%= f.label :introduction %>
+      </div>
+      <div class="col-xs-3">
+        <%= f.text_area :introduce %>
+      </div>
+      <div class="col-xs-3">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="actions", style="text-align: center;">
+        <%= f.submit %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="actions", style="text-align: center;">
+        <%= link_to user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-ban"></i>退会する<i class="fas fa-ban"></i>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
 </div>
 
 <div class="footer">
