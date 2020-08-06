@@ -82,6 +82,10 @@ $(function() {
 });
 
 $(function() {
+    $('.edit-user').fadeIn(2000);
+});
+
+$(function() {
     $('.follow_index').fadeIn(2000);
 });
 
