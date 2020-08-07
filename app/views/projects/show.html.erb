@@ -27,16 +27,8 @@
             <td><%= @project.name %></td>
             <td><%= @project.goal %></td>
             <td><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
-            <td>
-              <% if @project.favorite_by?(current_user) %>
-                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :delete, remote: true do %>
-                  <span class="glyphicon glyphicon-heart", style="color: red;"><%= @project.favorites.count%></span>
-                <% end %>
-              <% else %>
-                <%= link_to project_favorites_path(@project, redirect_id: 1), method: :post, remote: true do %>
-                  <span class="glyphicon glyphicon-heart-empty"><%= @project.favorites.count %></span>
-                <% end %>
-              <% end %>
+            <td class="project_<%= @project.id %>">
+              <%= render "favorites/favorite", project: @project %>
             </td>
           </tr>
         </tbody>
