@@ -17,15 +17,15 @@
 					<br>
       				<tr><%= attachment_image_tag(@user, :image, :fill, 262, 100, fallback: "no_image.jpg", size:'150×150') %></tr> 
       				<tr>
-    	  				<th>name</th>
+    	  				<th>名前</th>
     	  				<th><%= @user.name %></th>
       				</tr>
       				<tr>
-			    	  <th>introduction</th>
+			    	  <th>紹介文</th>
 			    	  <th><%= @user.introduce %></th>
 				    </tr>
       				<tr>
-			    	  <th>projects</th>
+			    	  <th>プロジェクト</th>
 			    	  <th>
 			    	  	<%= link_to projects_path(user_id: @user.id), data: {"turbolinks" => false} do %>
 			    	  		<%= @user.projects.count %>
@@ -33,7 +33,7 @@
 			    	  </th>
 				    </tr>
       				<tr>
-			    	  <th>level</th>
+			    	  <th>レベル</th>
 			    	  <% if @user.project_data.all.sum(:hour) == 0 %>
 			    	  	<th>Lv.<%= @user.project_data.all.sum(:hour) %></th>
 			    	  <% elsif @user.project_data.all.sum(:hour) > 100 %>
@@ -49,7 +49,7 @@
 			    	  <% end %>
 				    </tr>
 				    <tr>
-						<th>follow</th>
+						<th>フォロー</th>
 						<th>
 							<%= link_to follows_path(@user.id), data: {"turbolinks" => false} do %>
 								<%= @user.follower.count %>
@@ -57,7 +57,7 @@
 						</th>
 					</tr>
 					<tr>
-					<th>followers</th>
+					<th>フォロワー</th>
 						<th>
 							<%= link_to followers_path(@user.id), data: {"turbolinks" => false} do %>
 								<%= @user.followed.count %>
