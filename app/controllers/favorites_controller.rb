@@ -5,14 +5,12 @@ class FavoritesController < ApplicationController
     @project = Project.find(params[:project_id])
     favorite = @project.favorites.new(user_id: current_user.id)
     favorite.save
-    redirect_to request.referer
   end
 
   def destroy
     @project = Project.find(params[:project_id])
     favorite = current_user.favorites.find_by(project_id: @project.id)
     favorite.destroy
-    redirect_to request.referer
   end
 
 

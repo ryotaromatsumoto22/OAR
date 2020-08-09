@@ -27,7 +27,7 @@
             <td><%= @project.name %></td>
             <td><%= @project.goal %></td>
             <td><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
-            <td class="project_<%= @project.id %>">
+            <td class="project_iine-<%= @project.id %>">
               <%= render "favorites/favorite", project: @project %>
             </td>
           </tr>
