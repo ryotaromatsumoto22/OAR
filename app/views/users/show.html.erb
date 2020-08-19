@@ -57,12 +57,16 @@
 						</th>
 					</tr>
 					<tr>
-					<th>フォロワー</th>
+						<th>フォロワー</th>
 						<th>
 							<%= link_to followers_path(@user.id), data: {"turbolinks" => false} do %>
 								<%= @user.followed.count %>
 							<% end %>
 						</th>
+					</tr>
+					<tr>
+						<th>ログイン回数</th>
+						<th><%= @user.sign_in_count %></th>
 					</tr>
 				</table>
 
