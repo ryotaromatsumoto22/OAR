@@ -11,7 +11,11 @@
 				   	<th style="color: #777777;"></th>
 				    <th style="color: #777777;">名前</th>
 				    <th style="color: #777777;">レベル</th>
-				    <th colspan="3"></th>
+				    <th></th>
+				    <th></th>
+				    <th></th>
+				    <th></th>
+				    <th style="color: #777777;">最近のログイン日時</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,7 +37,11 @@
 					            <% end %>
 					        <% end %>
 					    </td>
-					    <td><%= link_to "ユーザー詳細", user_path(user.id) %></td>
+					    <td><%= link_to "ユーザー詳細", user_path(user.id) %>
+					    </td>
+					    <td>
+				        	<%= user.current_sign_in_at %>
+				        </td>
 					</tr>
 				<% end %>
 			</tbody>
