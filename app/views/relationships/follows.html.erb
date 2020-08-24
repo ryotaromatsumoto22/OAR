@@ -15,7 +15,6 @@
           <th></th>
           <th></th>
           <th></th>
-          <th></th>
           <th style="color: #777777;">最近のログイン日時</th>
         </tr>
       </thead>
@@ -29,15 +28,6 @@
 
             <td>フォロー：<%= user.follower.count %></td>
             <td>フォロワー：<%= user.followed.count %></td>
-            <td>
-              <% unless user == current_user %>
-                <% if current_user.following?(user) %>
-                  <%= link_to 'フォローを外す', unfollow_path(user.id,redirect_id: 2), method: :POST %>
-                <% else %>
-                  <%= link_to 'フォローする', follow_path(user.id,redirect_id: 2), method: :POST %>
-                  <% end %>
-                <% end %>
-            </td>
             <td><%= link_to "ユーザー詳細", user_path(user.id) %></td>
             <td>
               <%= user.current_sign_in_at.strftime("%Y-%m-%d %H:%M") %>
