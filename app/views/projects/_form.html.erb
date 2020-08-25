@@ -11,22 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field col-xs-4">
     <%= form.label :プロジェクト名 %>
+  </div>
+  <div class="field col-xs-8">
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="field col-xs-4">
     <%= form.label :目標 %>
+  </div>
+  <div class="field col-xs-8">
     <%= form.text_field :goal %>
   </div>
 
-  <div class="field">
+  <div class="field col-xs-4">
     <%= form.label :期間 %>
-    <%= form.date_select :period %>~<%= form.date_select :end_of_period %>
+  </div>
+  <div class="field col-xs-8">
+    <%= form.date_select :period %><br><br>
+    　~<%= form.date_select :end_of_period %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="text-align: center;">
     <%= form.submit %>
   </div>
 

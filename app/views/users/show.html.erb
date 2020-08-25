@@ -77,9 +77,9 @@
 						<% end %>
 					<% else %>
 						<% if current_user.following?(@user) %>
-	       					<%= link_to 'unfolllow', unfollow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', remote: true %>
+	       					<%= link_to 'フォローを外す', unfollow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', remote: true %>
 	    				<% else %>
-	       					<%= link_to 'follow', follow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', remote: true %>
+	       					<%= link_to 'フォローする', follow_path(@user.id,redirect_id: 0), method: :POST, class: 'btn btn-default btn-block col-xs-12', remote: true %>
 	    				<% end %>
 					<% end %>
 				</div>
