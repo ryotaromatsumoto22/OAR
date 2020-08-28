@@ -11,31 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field col-xs-4">
-    <%= form.label :プロジェクト名 %>
-  </div>
-  <div class="field col-xs-8">
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field col-xs-4">
-    <%= form.label :目標 %>
-  </div>
-  <div class="field col-xs-8">
-    <%= form.text_field :goal %>
-  </div>
-
-  <div class="field col-xs-4">
-    <%= form.label :期間 %>
-  </div>
-  <div class="field col-xs-8">
-    <%= form.date_select :period %>
-    <br><br>
-    　~<%= form.date_select :end_of_period %>
+  <div class="row", style="color: #777777;">
+    <div class="col-xs-4">
+    </div>
+    <div class="col-xs-2">
+      <%= form.label :プロジェクト名 %>
+    </div>
+    <div class="field col-xs-3">
+      <%= form.text_field :name %>
+    </div>
+    <div class="col-xs-3">
+    </div>
   </div>
 
-  <div class="actions" style="text-align: center; color: rgba(200, 0, 0, 0.8); ">
+  <div class="row", style="color: #777777;">
+    <div class="col-xs-4">
+    </div>
+    <div class="field col-xs-2">
+      <%= form.label :目標 %>
+    </div>
+    <div class="field col-xs-3">
+      <%= form.text_field :goal %>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+
+  <div class="row", style="color: #777777;">
+    <div class="col-xs-4">
+    </div>
+    <div class="col-xs-2">
+      <%= form.label :期間 %>
+    </div>
+    <div class="col-xs-6">
+      <%= form.date_select :period %>
+      ~<%= form.date_select :end_of_period %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions" style="text-align: center; padding-top: 20px; ">
       <%= form.submit value="新プロジェクトを始める" %>
+    </div>
   </div>
 
 <% end %>

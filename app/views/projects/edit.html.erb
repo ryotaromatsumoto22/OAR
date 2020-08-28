@@ -5,12 +5,12 @@
 <div class="container project_edit_container">
 
   <div class="row">
-    <h1 style="color: #777777; text-align: center;">Editing Project</h1>
+    <h1 style="color: #777777; text-align: center;" >プロジェクト編集</h1>
   </div>
 
   <br>
 
-  <div class="row", style="color: #666666;">
+  <div class="row", style="color: #666666; padding-top: 30px; ">
     <div class="col-xs-6 col-xs-offset-3" style="font-size: 18px;">
       <%= form_with(model: @project, local: true) do |form| %>
         <% if @project.errors.any? %>
@@ -25,33 +25,37 @@
           </div>
         <% end %>
 
-        <div class="field">
+        <div class="field col-xs-4">
           <%= form.label :プロジェクト名 %> 
+        </div>
+        <div class="field col-xs-8">
           <%= form.text_field :name %>
         </div>
 
-        <div class="field">
+        <div class="field col-xs-4">
           <%= form.label :目標 %> 
+        </div>
+        <div class="field col-xs-8">
           <%= form.text_field :goal %>
         </div>
 
-        <div class="field">
-          <%= form.label :期間 %> 
-          <%= form.date_select :period %>~<%= form.date_select :end_of_period %>
+        <div class="field col-xs-4">
+          <%= form.label :期間 %>
+        </div>
+        <div class="field col-xs-8">
+          <%= form.date_select :period %>
+          <br>
+          ~<%= form.date_select :end_of_period %>
         </div>
 
         <br>
 
         <div class="actions", style="text-align: center;">
-          <%= form.submit %>
+          <%= form.submit value="プロジェクトを更新する" %>
         </div>
 
       <% end %>
     </div>
-  </div>
-
-  <div class="row", style="text-align: center;">
-    <%= link_to 'Back', @project, data: {"turbolinks" => false} %>
   </div>
 </div>
 
