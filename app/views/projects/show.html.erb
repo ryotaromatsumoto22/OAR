@@ -23,11 +23,11 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @project.user.name %></td>
-            <td><%= @project.name %></td>
-            <td><%= @project.goal %></td>
-            <td><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
-            <td class="project_iine-<%= @project.id %>">
+            <td style="font-size: 16px;"><%= @project.user.name %></td>
+            <td style="font-size: 16px;"><%= @project.name %></td>
+            <td style="font-size: 16px;"><%= @project.goal %></td>
+            <td style="font-size: 16px;"><%= @project.period.to_date %> ~ <%= @project.end_of_period.to_date %></td>
+            <td class="project_iine-<%= @project.id %>" style="font-size: 18px;">
               <%= render "favorites/favorite", project: @project %>
             </td>
           </tr>
@@ -56,26 +56,26 @@
       <table class="table", style="color: grey;">
         <thead>
           <tr class="table-light">
-            <th><%= link_to "今週", project_path(view: "weekly"), :style=>"color: rgba(200, 0, 0, 0.8)", data: {"turbolinks" => false} %></th>
-            <th><%= link_to "今月", project_path(view: "monthly"), :style=>"color: #FFCC33", data: {"turbolinks" => false} %></th>
-            <th><%= link_to "今年", project_path(view: "yearly"), :style=>"color: #00CC99", data: {"turbolinks" => false} %></th>
+            <th><%= link_to "今週", project_path(view: "weekly"), :style=>"color: rgba(200, 0, 0, 0.8)" %></th>
+            <th><%= link_to "今月", project_path(view: "monthly"), :style=>"color: #FFCC33"%></th>
+            <th><%= link_to "今年", project_path(view: "yearly"), :style=>"color: #00CC99"%></th>
             <th>累計時間</th>
             <th>いいね数</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= @project_data.where("date >= ?", Date.today - 7).sum(:hour) %>時間</td>
-            <td><%= @project_data.where("date >= ?", Date.today - 30).sum(:hour) %>時間</td>
-            <td><%= @project_data.where("date >= ?", Date.today - 365).sum(:hour) %>時間</td>
-            <td><%= @project_data.all.sum(:hour) %>時間</td>
-            <td><%= @project.favorites.count %>いいね！</td>
-            <td>
+            <td style="font-size: 18px;"><%= @project_data.where("date >= ?", Date.today - 7).sum(:hour) %>時間</td>
+            <td style="font-size: 18px;"><%= @project_data.where("date >= ?", Date.today - 30).sum(:hour) %>時間</td>
+            <td style="font-size: 18px;"><%= @project_data.where("date >= ?", Date.today - 365).sum(:hour) %>時間</td>
+            <td style="font-size: 18px;"><%= @project_data.all.sum(:hour) %>時間</td>
+            <td style="font-size: 18px;"><%= @project.favorites.count %>いいね！</td>
+            <td style="font-size: 18px;">
               <%= link_to edit_project_path(@project), data: {"turbolinks" => false} do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             </td>
-            <td>
+            <td style="font-size: 18px;">
               <% if current_user == @project.user %>
                 <%= link_to @project, method: :delete, data: { confirm: 'Are you sure?' }, data: {"turbolinks" => false} do %>
                 <i class="fas fa-trash"></i>
