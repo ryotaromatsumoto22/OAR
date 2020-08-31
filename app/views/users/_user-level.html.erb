@@ -1,13 +1,13 @@
 <% if user.project_data.all.sum(:hour) == 0 %>
-	<td>Lv.<%= user.project_data.all.sum(:hour) %></td>
+	<td style="font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></td>
 <% elsif user.project_data.all.sum(:hour) > 100 %>
-	<td style="color: rgba(200, 0, 0, 0.8);">Lv.<%= user.project_data.all.sum(:hour) %></td>
+	<td style="color: rgba(200, 0, 0, 0.8); font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></td>
 <% elsif user.project_data.all.sum(:hour) > 80 %>
-	<td style="color: #FF570D;">Lv.<%= user.project_data.all.sum(:hour) %></th>
+	<td style="color: #FF570D; font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></th>
 <% elsif user.project_data.all.sum(:hour) > 40 %>
-	<td style="color: #008000;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+	<td style="color: #008000; font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></td>
 <% elsif user.project_data.all.sum(:hour) > 20 %>
-	<td style="color: #005FFF;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+	<td style="color: #005FFF; font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></td>
 <% elsif user.project_data.all.sum(:hour) > 0 %>
-	<td style="color: #000080;">Lv.<%= user.project_data.all.sum(:hour) %></td>
+	<td style="color: #000080; font-size: 16px;">Lv.<%= user.project_data.all.sum(:hour) %></td>
 <% end %>
