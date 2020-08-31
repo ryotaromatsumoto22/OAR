@@ -48,6 +48,61 @@
 			    	  	<th style="color: #000080;">Lv.<%= @user.project_data.all.sum(:hour) %></th>
 			    	  <% end %>
 				    </tr>
+
+				    <!-- アイコン表示 -->
+
+				    <% if @user.project_data.all.sum(:hour) > 200 %>
+						<tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+					<% elsif @user.project_data.all.sum(:hour) > 100 %>
+						<tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+					<% elsif @user.project_data.all.sum(:hour) > 80 %>
+						<tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-crown" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+					<% elsif @user.project_data.all.sum(:hour) > 60 %>
+						<tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+					<% elsif @user.project_data.all.sum(:hour) > 40 %>
+						<tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+				    <% elsif @user.project_data.all.sum(:hour) > 20 %>
+					    <tr>
+					    	<th></th>
+					    	<th>
+					    		<i class="fas fa-award" style="font-size: 20px; color: gold;"></i>
+					    	</th>
+					    </tr>
+					<% end %>
+
+					<!-- アイコン表示ここまで -->
+
 				    <tr>
 						<th>フォロー</th>
 						<th>
@@ -83,7 +138,6 @@
 	    				<% end %>
 					<% end %>
 				</div>
-
 			</div>
 		</div>
 
