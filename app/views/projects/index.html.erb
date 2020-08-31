@@ -15,21 +15,21 @@
       <table class="table">
         <thead>
           <tr class="table-light">
-            <th style="color: #777777;">プロジェクト名</th>
-            <th style="color: #777777;">目標</th>
-            <th style="color: #777777;">期間</th>
-            <th style="color: #777777;">レベル</th>
+            <th style="color: #777777; font-size: 18px;">プロジェクト名</th>
+            <th style="color: #777777; font-size: 18px;">目標</th>
+            <th style="color: #777777; font-size: 18px;">期間</th>
+            <th style="color: #777777; font-size: 18px;">総合計時間</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% @projects.each do |project| %>
             <tr>
-              <td><%= project.name %></td>
-              <td><%= project.goal %></td>
-              <td><%= project.period.to_date %> 〜 <%= project.end_of_period.to_date %></td>
-              <td>Lv.<%= project.project_data.all.sum(:hour) %></td>
-              <td><%= link_to '詳細', project %></td>
+              <td style="font-size: 16px;"><%= project.name %></td>
+              <td style="font-size: 16px;"><%= project.goal %></td>
+              <td style="font-size: 16px;"><%= project.period.to_date %> 〜 <%= project.end_of_period.to_date %></td>
+              <td style="font-size: 16px;"><%= project.project_data.all.sum(:hour) %>時間</td>
+              <td style="font-size: 16px;"><%= link_to '詳細', project %></td>
             </tr>
           <% end %>
         </tbody>

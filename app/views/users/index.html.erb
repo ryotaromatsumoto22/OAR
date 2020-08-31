@@ -4,32 +4,32 @@
 
 <div class="body">
 	<div class="container user_index">
-		<h3  style="color: #777777;">ユーザー一覧</h3>
+		<h3  style="color: #777777; text-align: center;">ユーザー一覧</h3>
 		<table class="table table-hover table-inverse">
   			<thead>
 			    <tr>
-				   	<th style="color: #777777;"></th>
-				    <th style="color: #777777;">名前</th>
-				    <th style="color: #777777;">レベル</th>
+				   	<th style="color: #777777; font-size: 18px;"></th>
+				    <th style="color: #777777; font-size: 18px;">名前</th>
+				    <th style="color: #777777; font-size: 18px;">レベル</th>
 				    <th></th>
 				    <th></th>
 				    <th></th>
-				    <th style="color: #777777;">最近のログイン日時</th>
+				    <th style="color: #777777; font-size: 18px;">最近のログイン日時</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @users.each do |user| %>
 				    <tr>
-				    	<td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
-					    <td><%= user.name %></td>
+				    	<td style="font-size: 16px;"><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
+					    <td style="font-size: 16px;"><%= user.name %></td>
 
 					    <%= render "user-level", user: user %>
 
-					    <td>フォロー：<%= user.follower.count %></td>
-				        <td>フォロワー：<%= user.followed.count %></td>
-					    <td><%= link_to "ユーザー詳細", user_path(user.id) %>
+					    <td style="font-size: 16px;">フォロー：<%= user.follower.count %></td>
+				        <td style="font-size: 16px;">フォロワー：<%= user.followed.count %></td>
+					    <td style="font-size: 16px;"><%= link_to "ユーザー詳細", user_path(user.id) %>
 					    </td>
-					    <td>
+					    <td style="font-size: 16px;">
 				        	<%= user.current_sign_in_at.strftime("%Y-%m-%d %H:%M") %>
 				        </td>
 					</tr>
