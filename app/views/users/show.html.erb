@@ -3,6 +3,7 @@
 </div>
 
 <div class="container">
+	<!-- ログイン後メッセージ -->
 	<div class="row">
 		<div class="col-xs-3">
 			<p id="notice"><%= notice %></p>
@@ -10,7 +11,10 @@
 		<div class="col-xs-9">
 		</div>
 	</div>
+	<!-- ここまで、ログイン後メッセージ -->
+
 	<div class="row">
+		<!-- プロフィール欄 -->
 		<div class="col-xs-3">
 			<div class="profile", style="color: #777777;">
 				<table class='table'>
@@ -50,7 +54,7 @@
 				    </tr>
 
 				    <!-- アイコン表示 -->
-
+				    
 				    <% if @user.project_data.all.sum(:hour) > 200 %>
 						<tr>
 					    	<th></th>
@@ -140,10 +144,12 @@
 				</div>
 			</div>
 		</div>
+		<!-- ここまで、プロフィール欄 -->
 
 		<div class="col-xs-1">
 		</div>
 
+		<!-- グラフ表示 -->
 		<div class="col-xs-8", style="background-color: white;">
 			<div class="main_contents">
 				<% @project_for_graph.each do |project_id , data| %>
@@ -160,6 +166,7 @@
 				<% end %>
 			</div>
 		</div>
+		<!-- ここまで、グラフ表示 -->
 	</div>
 </div>
 
