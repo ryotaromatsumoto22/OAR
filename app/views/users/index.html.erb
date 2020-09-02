@@ -7,20 +7,20 @@
 		<h3  style="color: #777777; text-align: center;">ユーザー一覧</h3>
 		<table class="table table-hover table-inverse">
   			<thead>
-			    <tr>
-				   	<th style="color: #777777; font-size: 18px;"></th>
-				    <th style="color: #777777; font-size: 18px;">名前</th>
-				    <th style="color: #777777; font-size: 18px;">レベル</th>
+			    <tr style="color: #777777; font-size: 18px;">
+				   	<th></th>
+				    <th>名前</th>
+				    <th>レベル</th>
 				    <th></th>
 				    <th></th>
 				    <th></th>
-				    <th style="color: #777777; font-size: 18px;">最近のログイン日時</th>
+				    <th>最近のログイン日時</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @users.each do |user| %>
 				    <tr>
-				    	<td style="font-size: 16px;"><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
+				    	<td style="font-size: 16px;"><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></td>
 					    <td style="font-size: 16px;"><%= user.name %></td>
 
 					    <%= render "user-level", user: user %>

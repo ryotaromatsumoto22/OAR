@@ -5,7 +5,7 @@
 <div class="body">
   <div class="container follower_index">
 
-    <h3 style="color: #777777;">フォロワ一覧</h3>
+    <h3 style="color: #777777; text-align: center;">フォロワ一覧</h3>
     <table class="table table-hover table-inverse">
       <thead>
         <tr style="color: #777777;">
@@ -22,15 +22,15 @@
         <% @user.follower_user.each do |user| %>
           <tr>
             <td><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'35x35' %></td>
-            <td><%= user.name %></td>
+            <td style="font-size: 16px;"><%= user.name %></td>
 
             <%= render "users/user-level", user: user %>
 
-            <td>フォロー：<%= user.follower.count %></td>
-            <td>フォロワー：<%= user.followed.count %></td>
+            <td style="font-size: 16px;">フォロー：<%= user.follower.count %></td>
+            <td style="font-size: 16px;">フォロワー：<%= user.followed.count %></td>
             </td>
-            <td><%= link_to "ユーザー詳細", user_path(user.id) %></td>
-            <td>
+            <td style="font-size: 16px;"><%= link_to "ユーザー詳細", user_path(user.id) %></td>
+            <td style="font-size: 16px;">
               <%= user.current_sign_in_at.strftime("%Y-%m-%d %H:%M") %>
             </td>
           </tr>
