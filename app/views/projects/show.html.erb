@@ -94,7 +94,7 @@
     <div class="col-xs-2">
       <% if current_user == @project.user %>
         <button class="btn btn-default col-xs-12">
-          <%= link_to '記録する', new_project_datum_path(project_id: @project.id), data: {"turbolinks" => false} %>
+          <%= link_to '記録する', new_project_datum_path(project_id: @project.id) %>
         </button>
       <% end %>
     </div>

@@ -63,7 +63,7 @@
     <!-- 退会ボタン -->
     <div class="row">
       <div class="actions", style="text-align: center;">
-        <%= link_to user_path, method: :delete do %>
+        <%= link_to user_path, method: :delete, data: { confirm: '本当に退会しますか？' }  do %>
           退会する
         <% end %>
       </div>
