@@ -1,5 +1,7 @@
 # OAR（オール)（いかだのオールの意）
 
+アプリのURLはこちらです！:http://52.194.120.190/
+
 ## サイト概要
 何かにチャレンジし、大きな成長を成し遂げるための継続・習慣化を手助けするアプリです。毎日の記録をデータとして入力グラフ化することで成長を可視化し、継続のモチベーションにつなげます。
 
@@ -15,7 +17,33 @@
 ### 主な利用シーン
 日々の勉強や、ランニング、ダイエットなど、日々の生活において何か継続して取り組みたい時
 
-## 設計書
+### 環境・使用技術
+フロントエンド
+・HTML / CSS
+・Bootstrap 3.3.6
+・JavaScript、jQuery、Ajax
+
+バックエンド
+・Ruby 2.5.7
+・Rails 5.2.4.3
+
+開発環境
+・Vagrant 2.2.4
+・MySQL2
+
+本番環境
+・AWS (EC2、RDS for MySQL)
+・MySQL2
+・Nginx、 Puma
+・Capistrano自動デプロイ
 
 ### 機能一覧
+
+・ユーザー認証(devise)
+・いいね機能の非同期通信(Ajax)
+・フォロー機能の非同期通信(Ajax)
+・画像アップロード機能(Refile)
+・グラフ表示(chartkick)
+
+詳細は下記よりご覧ください。
 https://docs.google.com/spreadsheets/d/1zs9_8Yk3zsHHseLefxPX1XAXaA1LaebyAihIk_aC1j8/edit?usp=sharing
