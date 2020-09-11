@@ -5,7 +5,7 @@
 <div class="container project_edit_container">
 
   <div class="row">
-    <h1 style="color: #777777;">Editing Project</h1>
+    <h1 style="color: #777777; text-align: center;">記録時間を編集する</h1>
   </div>
 
   <br>
@@ -25,24 +25,49 @@
         </div>
       <% end %>
 
-
-      <div class="field">
-        <%= form.label :プロジェクト名 %>
-        <%= @project_datum.project.name %>
+      <div class="row", style="color: #777777; padding-top: 20px; font-size: 18px;">
+        <div class="col-xs-4">
+        </div>
+        <div class="col-xs-2">
+          <%= form.label :プロジェクト名 %>
+        </div>
+        <div class="field col-xs-3">
+          <%= @project_datum.project.name %>
+        </div>
+        <div class="col-xs-3">
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :日付 %>
-        <%= form.date_select :date %>
+      <div class="row", style="color: #777777; font-size: 18px;">
+        <div class="col-xs-4">
+        </div>
+        <div class="field col-xs-2">
+          <%= form.label :日付 %>
+        </div>
+        <div class="field col-xs-3">
+          <%= form.date_select :date %>
+        </div>
+        <div class="col-xs-3">
+        </div>
       </div>
 
-      <div class="field">
-        <%= form.label :時間 %>
-        <%= form.number_field :hour %>
+      <div class="row", style="color: #777777; font-size: 18px;">
+        <div class="col-xs-4">
+        </div>
+        <div class="field col-xs-2">
+          <%= form.label :時間 %>
+        </div>
+        <div class="field col-xs-3">
+          <%= form.number_field :hour %>
+        </div>
+        <div class="col-xs-3">
+        </div>
       </div>
 
-      <div class="actions">
-        <%= form.submit %>
+      <br>
+
+      <div class="actions", style="text-align: center; font-size: 18px;">
+        <%= form.submit value="記録を更新する" %>
       </div>
 
     <% end %>
