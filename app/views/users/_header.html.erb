@@ -9,13 +9,13 @@
 	         	<li style="font-family: serif; margin-top: 15px;">
 	            <!-- ようこそ、<%= current_user.name %>さん！ -->
 	         	</li>
-	          	<li><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #999999" %></li>
+	          	<li style="font-size: 17px;"><%= link_to "マイページ", user_path(current_user), style: "font-family: HiraMinPro-W6; color: #999999" %></li>
 
-	          	<li><%= link_to "ユーザー一覧", users_path, style: "font-family: HiraMinPro-W6; color: #999999" %></li>
+	          	<li style="font-size: 17px;"><%= link_to "ユーザー一覧", users_path, style: "font-family: HiraMinPro-W6; color: #999999" %></li>
 
-		        <li><%= link_to "新プロジェクト", new_project_path, style: "font-family: HiraMinPro-W6; color: rgba(200, 0, 0, 0.8)" %></li>
+		        <li style="font-size: 17px;"><%= link_to "新プロジェクト", new_project_path, style: "font-family: HiraMinPro-W6; color: rgba(200, 0, 0, 0.8)" %></li>
 
-		        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style: "font-family: HiraMinPro-W6; color: #999999;" %></li>
+		        <li style="font-size: 17px;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style: "font-family: HiraMinPro-W6; color: #999999;" %></li>
 
 	        <% else %>
 
