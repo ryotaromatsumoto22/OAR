@@ -21,8 +21,11 @@
 				<% @users.each do |user| %>
 				    <tr>
 				    	<td style="font-size: 16px;"><%= attachment_image_tag user, :image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></td>
-					    <td style="font-size: 16px;"><%= user.name %></td>
-
+				    	<% if user.project_data.all.sum(:hour) > 100 %>
+					    	<td style="font-size: 16px; color: green;"><%= user.name %></td>
+					    <% elsif %>
+					    	<td style="font-size: 16px;"><%= user.name %></td>
+					    <% end %>
 					    <%= render "user-level", user: user %>
 
 					    <td style="font-size: 16px;">フォロー：<%= user.follower.count %></td>
