@@ -155,11 +155,23 @@
 				<% @project_for_graph.each do |project_id , data| %>
 					<div class="col-xs-5">
 						<br>
-						<%= link_to project_path(project_id), data: {"turbolinks" => false} do %>
+						<%= link_to project_path(project_id) do %>
 							<h4 style="color: #777777; font-family: HiraMinPro-W6;"><%= @title_for_graph[project_id] %></h4>
 							<br>
 							<div class="graph">
-								<%= column_chart data, colors: ['#C0C0C0']%>
+								<% if @user.project_data.all.sum(:hour) == 0 %>
+						    	  	<%= column_chart data, colors: ['#C0C0C0']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 150 %>
+						    	  	<%= column_chart data, colors: ['#FFC7AF']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 80 %>
+						    	  	<%= column_chart data, colors: ['#FFABCE']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 40 %>
+						    	  	<%= column_chart data, colors: ['#EEFFFF']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 20 %>
+						    	  	<%= column_chart data, colors: ['#FFFFEE']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 0 %>
+						    	  	<%= column_chart data, colors: ['#C0C0C0']%>
+						    	<% end %>
 							</div>
 						<% end %>
 					</div>
