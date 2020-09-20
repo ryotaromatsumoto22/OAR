@@ -161,6 +161,10 @@
 							<div class="graph">
 								<% if @user.project_data.all.sum(:hour) == 0 %>
 						    	  	<%= column_chart data, colors: ['#C0C0C0']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 500 %>
+						    	  	<%= column_chart data, colors: ['#FFCC99']%>
+						    	<% elsif @user.project_data.all.sum(:hour) > 250 %>
+						    	  	<%= column_chart data, colors: ['#9966FF']%>
 						    	<% elsif @user.project_data.all.sum(:hour) > 150 %>
 						    	  	<%= column_chart data, colors: ['#FFC7AF']%>
 						    	<% elsif @user.project_data.all.sum(:hour) > 80 %>
